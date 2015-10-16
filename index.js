@@ -2,14 +2,14 @@
 
 function ES6ModulesToCJSTransformer() {}
 
-ES6ModulesToCJSTransformer.prototype.REGEXP_IMPORT_LINE = /^\s*import(?:\s+(.*)\s+from\s+|\s+)(?:'|")([^\s;]+)(?:'|");?$/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_SUB_IMPORT = /(.*)\s*\{(.*)\}\s*(.*)/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_ALIAS = /(\S+)\s+as\s+(\S+)/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_BEFORE = /\s*([^\s,]+)\s*,/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_AFTER = /,\s*([^\s,]+)\s*/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_PATH = /(?:\.{0,2}\/)+(\w)/g;
-ES6ModulesToCJSTransformer.prototype.REGEXP_IMPORT_GROUP_SPLIT = /\s?,\s?/;
-ES6ModulesToCJSTransformer.prototype.REGEXP_NEW_LINE = /\n|\r/;
+ES6ModulesToCJSTransformer.prototype.REGEXP_IMPORT_LINE = new RegExp("^\\s*import(?:\\s+(.*)\\s+from\\s+|\\s+)(?:\'|\")([^\\s;]+)(?:\'|\");?$");
+ES6ModulesToCJSTransformer.prototype.REGEXP_SUB_IMPORT = new RegExp("(.*)\\s*\\{(.*)\\}\\s*(.*)");
+ES6ModulesToCJSTransformer.prototype.REGEXP_ALIAS = new RegExp("(\\S+)\\s+as\\s+(\\S+)");
+ES6ModulesToCJSTransformer.prototype.REGEXP_BEFORE = new RegExp("\\s*([^\\s,]+)\\s*,");
+ES6ModulesToCJSTransformer.prototype.REGEXP_AFTER = new RegExp(",\\s*([^\\s,]+)\\s*");
+ES6ModulesToCJSTransformer.prototype.REGEXP_PATH = new RegExp("(?:\\.{0,2}\\/)+(\\w)", "g");
+ES6ModulesToCJSTransformer.prototype.REGEXP_IMPORT_GROUP_SPLIT = new RegExp("\\s?,\\s?");
+ES6ModulesToCJSTransformer.prototype.REGEXP_NEW_LINE = new RegExp("\\n|\\r");
 
 ES6ModulesToCJSTransformer.prototype.getStructure = function getStructure(subImport) {
     var alias = subImport && subImport.match(this.REGEXP_ALIAS);
