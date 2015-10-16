@@ -26,7 +26,7 @@ ES6ModulesToCJSTransformer.prototype.getAssignment = function(structure, require
     if (structure[0] === '*') {
         return '';
     }
-    return this.variableDeclarationWord + ' ' + structure[0] + ' = ' + requireName + '.' + structure[1] + ';';
+    return this.variableDeclarationWord + ' ' + structure[0] + ' = ' + requireName + '[\'' + structure[1] + '\'];';
 
 };
 
@@ -101,7 +101,7 @@ ES6ModulesToCJSTransformer.prototype.transform = function(sourceContent) {
             requirePart = self.variableDeclarationWord + ' ' + requireName + ' = ';
         }
 
-        requirePart += 'require(\'' + path + '\');';
+        requirePart += '(function(module) { return module && typeof module[\'default\'] !== \'undefined\' ? module[\'default\'] : module; })(require(\'' + path + '\'))';
 
         allStructures.forEach(function(structure) {
             if (structure && requireName === structure[0] && structure[0] === structure[1]) {
@@ -119,5 +119,6 @@ ES6ModulesToCJSTransformer.prototype.transform = function(sourceContent) {
     return lines.join('\n');
 
 };
+
 
 module.exports = ES6ModulesToCJSTransformer;
