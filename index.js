@@ -98,16 +98,17 @@ ES6ModulesToCJSTransformer.prototype.transform = function(sourceContent) {
 
         if (requireName) {
             requireName = self.getRequireName(requireName);
-            requirePart = self.variableDeclarationWord + ' ' + requireName + ' = ';
+            requirePart = self.variableDeclarationWord + ' _' + requireName + ' = ';
+            importParts.push(self.variableDeclarationWord + ' ' + requireName + ' = _' + requireName + '[\'default\'] || _' + requireName + ';');
         }
 
-        requirePart += '(function(module) { return module && typeof module[\'default\'] !== \'undefined\' ? module[\'default\'] : module; })(require(\'' + path + '\'))';
+        requirePart += 'require(\'' + path + '\')';
 
         allStructures.forEach(function(structure) {
             if (structure && requireName === structure[0] && structure[0] === structure[1]) {
                 return;
             }
-            var assignment = self.getAssignment(structure, requireName);
+            var assignment = self.getAssignment(structure, '_' + requireName);
             if (assignment) {
                 importParts.push(assignment);
             }
