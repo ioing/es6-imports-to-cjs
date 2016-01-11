@@ -7,7 +7,7 @@ ES6ModulesToCJSTransformer.prototype.REGEXP_SUB_IMPORT = new RegExp("(.*)\\s*\\{
 ES6ModulesToCJSTransformer.prototype.REGEXP_ALIAS = new RegExp("(\\S+)\\s+as\\s+(\\S+)");
 ES6ModulesToCJSTransformer.prototype.REGEXP_BEFORE = new RegExp("\\s*([^\\s,]+)\\s*,");
 ES6ModulesToCJSTransformer.prototype.REGEXP_AFTER = new RegExp(",\\s*([^\\s,]+)\\s*");
-ES6ModulesToCJSTransformer.prototype.REGEXP_PATH = new RegExp("(?:\\.{0,2}\\/)+(\\w)", "g");
+ES6ModulesToCJSTransformer.prototype.REGEXP_PATH = new RegExp("(?:\\.{0,2}(?:\\/|\\.))+(\\w)", "g");
 ES6ModulesToCJSTransformer.prototype.REGEXP_IMPORT_GROUP_SPLIT = new RegExp("\\s?,\\s?");
 ES6ModulesToCJSTransformer.prototype.REGEXP_NEW_LINE = new RegExp("\\n|\\r");
 
