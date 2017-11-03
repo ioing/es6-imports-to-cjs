@@ -1,5 +1,5 @@
 {
-  "name": "es6-imports-to-cjs",
+  "name": "es6-imports-to-commonjs",
   "version": "1.0.0",
   "description": "Transform imports in an ES6 string into commonjs require calls",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atondelier/es6-imports-to-cjs.git"
+    "url": "git+https://github.com/ioing/es6-imports-to-commonjs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/atondelier/es6-imports-to-cjs/issues"
+    "url": "https://github.com/ioing/es6-imports-to-commonjs/issues"
   },
-  "homepage": "https://github.com/atondelier/es6-imports-to-cjs#readme"
+  "homepage": "https://github.com/ioing/es6-imports-to-commonjs#readme"
 }
